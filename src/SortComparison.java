@@ -27,7 +27,7 @@
         	previousIndex=index;
         	
         	while(previousIndex>0 && a[previousIndex-1]>temp){
-        		a[]
+        		
         	}
         }
     }//end insertionsort
