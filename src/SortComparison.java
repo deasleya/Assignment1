@@ -95,9 +95,23 @@
      */
     static double [] selectionSort (double a[]){
 
-         //todo: implement the sort
-
-    }//end selectionsort
+        //int i = 0;
+        //int j = 0;
+        int smallest = 0;
+        double temp;
+        
+        for(int i = 0; i < a.length -1;i++){
+        	smallest = i;
+        	for(int j =1; j<a.length-1;j++){
+        		if(a[j]<a[smallest])
+        			smallest = j;
+        	}
+        	temp = a[smallest];
+        	a[smallest] = a[i];
+        	a[i] = temp;
+        }
+        return a;
+    }
 
    
 
