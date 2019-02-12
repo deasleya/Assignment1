@@ -27,10 +27,13 @@
         	previousIndex=index;
         	
         	while(previousIndex>0 && a[previousIndex-1]>temp){
-        		
+        		a[previousIndex] = a[previousIndex-1];
+        		previousIndex--;
         	}
+        	a[previousIndex]=temp;
         }
-    }//end insertionsort
+        return a;
+    }
 
     /**
      * Sorts an array of doubles using Quick Sort.
