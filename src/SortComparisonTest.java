@@ -61,6 +61,14 @@ public class SortComparisonTest
 		double[] expected = new double[] {3.0,5.0,7.0,9.0};
 		Arrays.equals(expected, a);   
 	}
+	
+	@Test
+	public void testMergeSortRecursive(){
+		double[] a = {9.0,5.0,3,0,7.0};
+		SortComparison.mergeSortRecursive(a);
+		double[] expected = new double[] {3.0,5.0,7.0,9.0};
+		Arrays.equals(expected, a);   
+	}
 
 
 	public static void main(String[] args)

@@ -75,11 +75,14 @@
 
     static double[] mergeSortIterative (double a[]) {
 
-		for(int i = 1; i <= (a.length/2) + 1; i*=2){
+    	
+    	
+    	
+		/*for(int i = 1; i <= (a.length/2) + 1; i*=2){
 			for(int j = i; j < a.length; j+= 2 * i){
 				
 			}
-		}
+		}*/
     	
     	/*int current;
 		int leftStart;
@@ -105,8 +108,17 @@
      */
     static double[] mergeSortRecursive (double a[]) {
     	
-
-    	//todo: implement the sort
+    	int length = a.length;
+    	if(length <= 1)
+    		return a;
+    	double[] x = new double[length/2];
+    	double[] y = new double[length - length/2];
+    	for(int i = 0; i < x.length; i++)
+    		x[i] = a[i];
+    	for(int i = 0; i < y.length; i++)
+    		y[i] = a[i + length/2];
+    	return merge(mergeSortRecursive(x),mergeSortRecursive(y));
+    	
 	
    }//end mergeSortRecursive
     	
@@ -158,8 +170,21 @@
     		return right;
     }
     
-    static double Merge(double[] a, double[] b){
-    	double[] c = new double[a.length + b.length
+    static double[] merge(double[] a, double[] b){
+    	double[] c = new double[a.length + b.length];
+    	int i = 0;
+    	int j = 0;
+    	for(int k = 0; k < c.length; k++){
+    		if(i >= a.length)
+    			c[k] = b[j++];
+    		else if(j >= b.length)
+    			c[k] = a[i++];
+    		else if(a[i] <= b[j])
+    			c[k] = a[i++];
+    		else
+    			c[k] = b[j++];
+    	}
+    	return c;
     }
     
     /**
