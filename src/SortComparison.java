@@ -44,7 +44,7 @@
      */
     static double [] quickSort (double a[]){
 	
-		double lo = a[0];
+		/*double lo = a[0];
 		double hi = a[a.length-1];
 		if(hi<=lo)
 			return;
@@ -54,7 +54,7 @@
 		int i = (int) lo;
 		while(i<=gt){
 			int cmp = a[i].compareTo(v);
-		}
+		}*/
 
     }//end quicksort
 
@@ -84,17 +84,17 @@
 			}
 		}*/
     	
-    	/*int current;
+    	int current;
 		int leftStart;
 		int arraySize = a.length;
 		for(current = 1; current <= arraySize-1; current = 2*current){
 			for(leftStart=0; leftStart < arraySize-1; leftStart += 2*current){
 				int mid = leftStart + current - 1;
 				int right = getMin(leftStart+2*current-1,arraySize-1);
-				mergeArray(a,leftStart,mid,right);
+				a = mergeArray(a,leftStart,mid,right);
 			}
-		}*/
-	
+		}
+		return a;
     }//end mergesortIterative
     
     
@@ -122,7 +122,7 @@
 	
    }//end mergeSortRecursive
     	
-    static void mergeArray(double a[], int left, int mid, int right){
+    static double[] mergeArray(double a[], int left, int mid, int right){
     	
     	int leftArraySize = mid-left+1;
     	int rightArraySize = right-mid;
@@ -161,6 +161,7 @@
     		rightPointer++;
     		tempPointer++;
     	}
+    	return a;
     }
     
     static int getMin(int left, int right){
