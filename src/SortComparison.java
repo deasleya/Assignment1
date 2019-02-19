@@ -44,7 +44,17 @@
      */
     static double [] quickSort (double a[]){
 	
-		 //todo: implement the sort
+		double lo = a[0];
+		double hi = a[a.length-1];
+		if(hi<=lo)
+			return;
+		int lt = (int) lo;
+		int gt  = (int) hi;
+		Comparable v = a[(int) lo];
+		int i = (int) lo;
+		while(i<=gt){
+			int cmp = a[i].compareTo(v);
+		}
 
     }//end quicksort
 
@@ -65,7 +75,22 @@
 
     static double[] mergeSortIterative (double a[]) {
 
-		 //todo: implement the sort
+		for(int i = 1; i <= (a.length/2) + 1; i*=2){
+			for(int j = i; j < a.length; j+= 2 * i){
+				
+			}
+		}
+    	
+    	/*int current;
+		int leftStart;
+		int arraySize = a.length;
+		for(current = 1; current <= arraySize-1; current = 2*current){
+			for(leftStart=0; leftStart < arraySize-1; leftStart += 2*current){
+				int mid = leftStart + current - 1;
+				int right = getMin(leftStart+2*current-1,arraySize-1);
+				mergeArray(a,leftStart,mid,right);
+			}
+		}*/
 	
     }//end mergesortIterative
     
@@ -85,6 +110,57 @@
 	
    }//end mergeSortRecursive
     	
+    static void mergeArray(double a[], int left, int mid, int right){
+    	
+    	int leftArraySize = mid-left+1;
+    	int rightArraySize = right-mid;
+    	double[] leftArray = new double[leftArraySize];
+    	double[] rightArray = new double[rightArraySize];
+    	
+    	for(int i = 0; i<leftArraySize;i++)
+    		leftArray[i] = a[left+i];
+    	for(int j=0; j<rightArraySize; j++)
+    		rightArray[j] = a[mid+1+j];
+    	
+    	int leftPointer = 0;
+    	int rightPointer = 0;
+    	int tempPointer = 0;
+    	
+    	while(leftPointer<leftArraySize && rightPointer<rightArraySize){
+    		if(leftArray[leftPointer] <= rightArray[rightPointer]){
+    			a[tempPointer] = leftArray[leftPointer];
+    			leftPointer++;
+    		}
+    		else{
+    			a[tempPointer] = rightArray[rightPointer];
+    			rightPointer++;
+    		}
+    		tempPointer++;
+    	}
+    	
+    	while(leftPointer<leftArraySize){
+    		a[tempPointer++] = leftArray[leftPointer++];
+    		leftPointer++;
+    		tempPointer++;
+    	}
+    	
+    	while(rightPointer<rightArraySize){
+    		a[tempPointer++] = rightArray[rightPointer++];
+    		rightPointer++;
+    		tempPointer++;
+    	}
+    }
+    
+    static int getMin(int left, int right){
+    	if(left<=right)
+    		return left;
+    	else
+    		return right;
+    }
+    
+    static double Merge(double[] a, double[] b){
+    	double[] c = new double[a.length + b.length
+    }
     
     /**
      * Sorts an array of doubles using Selection Sort.
@@ -94,9 +170,7 @@
      *
      */
     static double [] selectionSort (double a[]){
-
-        //int i = 0;
-        //int j = 0;
+    	
         int smallest = 0;
         double temp;
         
