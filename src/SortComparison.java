@@ -4,7 +4,7 @@
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
  *
- *  @author
+ *  @author Aine Deasley
  *  @version HT 2019
  */
 
@@ -42,21 +42,13 @@
      * @return array sorted in ascending order
      *
      */
+    
     static double [] quickSort (double a[]){
-	
-		/*double lo = a[0];
-		double hi = a[a.length-1];
-		if(hi<=lo)
-			return;
-		int lt = (int) lo;
-		int gt  = (int) hi;
-		Comparable v = a[(int) lo];
-		int i = (int) lo;
-		while(i<=gt){
-			int cmp = a[i].compareTo(v);
-		}*/
+    	
+    	return a;
 
-    }//end quicksort
+    }
+    //end quicksort
 
     /**
      * Sorts an array of doubles using Merge Sort.
@@ -75,15 +67,6 @@
 
     static double[] mergeSortIterative (double a[]) {
 
-    	
-    	
-    	
-		/*for(int i = 1; i <= (a.length/2) + 1; i*=2){
-			for(int j = i; j < a.length; j+= 2 * i){
-				
-			}
-		}*/
-    	
     	int current;
 		int leftStart;
 		int arraySize = a.length;

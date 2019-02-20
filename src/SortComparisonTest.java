@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+
+import java.io.*;
 import java.util.Arrays;
 
 import org.junit.Assert;
@@ -11,9 +13,19 @@ import org.junit.runners.JUnit4;
 /**
  *  Test class for SortComparison.java
  *
- *  @author
+ *  @author Aine Deasley
  *  @version HT 2019
+ *  
+ *   a. Which of the sorting algorithms does the order of input have an impact on? Why?
+ *	b. Which algorithm has the biggest difference between the best and worst performance, based
+ *	   on the type of input, for the input of size 1000? Why?
+ *	c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
+ *	   based on the input size? Please consider only input files with random order for this answer.
+ *	d. Did you observe any difference between iterative and recursive implementations of merge
+ *      sort?
+ *	e. Which algorithm is the fastest for each of the 7 input files? 
  */
+
 @RunWith(JUnit4.class)
 public class SortComparisonTest
 {
@@ -57,7 +69,7 @@ public class SortComparisonTest
 	@Test
 	public void testSelectionSort(){
 		double[] a = {9.0,5.0,3,0,7.0};
-		SortComparison.insertionSort(a);
+		SortComparison.selectionSort(a);
 		double[] expected = new double[] {3.0,5.0,7.0,9.0};
 		Arrays.equals(expected, a);   
 	}
@@ -82,6 +94,14 @@ public class SortComparisonTest
 	public static void main(String[] args)
 	{
 		//TODO: implement this method
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(new File("numbers10.txt")));
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
