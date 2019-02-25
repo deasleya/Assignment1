@@ -8,96 +8,98 @@
  *  @version HT 2019
  */
 
- class SortComparison {
+class SortComparison {
 
-    /**
-     * Sorts an array of doubles using InsertionSort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     * @param a: An unsorted array of doubles.
-     * @return array sorted in ascending order.
-     *
-     */
-    static double [] insertionSort (double a[]){
+	/**
+	 * Sorts an array of doubles using InsertionSort.
+	 * This method is static, thus it can be called as SortComparison.sort(a)
+	 * @param a: An unsorted array of doubles.
+	 * @return array sorted in ascending order.
+	 *
+	 */
+	static double [] insertionSort (double a[]){
 
-        double temp;
-        int previousIndex;
-        
-        for(int index=1; index<a.length; index++){
-        	temp=a[index];
-        	previousIndex=index;
-        	
-        	while(previousIndex>0 && a[previousIndex-1]>temp){
-        		a[previousIndex] = a[previousIndex-1];
-        		previousIndex--;
-        	}
-        	a[previousIndex]=temp;
-        }
-        return a;
-    }
+		double temp;
+		int previousIndex;
 
-    /**
-     * Sorts an array of doubles using Quick Sort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     * @param a: An unsorted array of doubles.
-     * @return array sorted in ascending order
-     *
-     */
-    
-    static double [] quickSort (double a[]){
-    	recursiveQuick(a, 0, a.length-1);
-    	return a;
+		for(int index=1; index<a.length; index++){
+			temp=a[index];
+			previousIndex=index;
 
-    }
-    //end quicksort
-    
-    static double[] recursiveQuick(double[] a, int lo, int hi) {
-    	if(hi >= lo) {
-    	return a;
-    	}
-    	int pivotPos = partition(a, lo, hi);
-    	recursiveQuick(a, lo, pivotPos-1);
-    	recursiveQuick(a, pivotPos+1, hi);
-    	return a;
-    	}
-    
-    static int partition(double[] a, int lo, int hi) {
-    	int i = lo-1;
-    	double pivot = a[hi];
-    	
-    	for(int j=lo; j<=hi; j++){
-    		if(a[j] <= pivot){
-    			i++;
-    			double temp = a[i];
-    			a[i] = a[j];
-    			a[j] = temp;
-    		}
-    	}
-    	
-    	double temp = a[i+1];
-    	a[i+1] = a[hi];
-    	a[hi] = temp;
-    	
-    	return i;
-    	}
+			while(previousIndex>0 && a[previousIndex-1]>temp){
+				a[previousIndex] = a[previousIndex-1];
+				previousIndex--;
+			}
+			a[previousIndex]=temp;
+		}
+		return a;
+	}
 
-    /**
-     * Sorts an array of doubles using Merge Sort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     * @param a: An unsorted array of doubles.
-     * @return array sorted in ascending order
-     *
-     */
-    /**
-     * Sorts an array of doubles using iterative implementation of Merge Sort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     *
-     * @param a: An unsorted array of doubles.
-     * @return after the method returns, the array must be in ascending sorted order.
-     */
+	/**
+	 * Sorts an array of doubles using Quick Sort.
+	 * This method is static, thus it can be called as SortComparison.sort(a)
+	 * @param a: An unsorted array of doubles.
+	 * @return array sorted in ascending order
+	 *
+	 */
 
-    static double[] mergeSortIterative (double a[]) {
+	static double [] quickSort (double a[]){
+		if(a.length!=0){
+			recursiveQuick(a, 0, a.length-1);
+		}
+		return a;
 
-    	int current;
+	}
+	//end quicksort
+
+	static double[] recursiveQuick(double[] a, int lo, int hi) {
+		if(hi >= lo) {
+			return a;
+		}
+		int pivotPos = partition(a, lo, hi);
+		recursiveQuick(a, lo, pivotPos-1);
+		recursiveQuick(a, pivotPos+1, hi);
+		return a;
+	}
+
+	static int partition(double[] a, int lo, int hi) {
+		int i = lo-1;
+		double pivot = a[hi];
+
+		for(int j=lo; j<=hi; j++){
+			if(a[j] <= pivot){
+				i++;
+				double temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+		}
+
+		double temp = a[i+1];
+		a[i+1] = a[hi];
+		a[hi] = temp;
+
+		return i;
+	}
+
+	/**
+	 * Sorts an array of doubles using Merge Sort.
+	 * This method is static, thus it can be called as SortComparison.sort(a)
+	 * @param a: An unsorted array of doubles.
+	 * @return array sorted in ascending order
+	 *
+	 */
+	/**
+	 * Sorts an array of doubles using iterative implementation of Merge Sort.
+	 * This method is static, thus it can be called as SortComparison.sort(a)
+	 *
+	 * @param a: An unsorted array of doubles.
+	 * @return after the method returns, the array must be in ascending sorted order.
+	 */
+
+	static double[] mergeSortIterative (double a[]) {
+
+		int current;
 		int leftStart;
 		int arraySize = a.length;
 		for(current = 1; current <= arraySize-1; current = 2*current){
@@ -108,131 +110,131 @@
 			}
 		}
 		return a;
-    }//end mergesortIterative
-    
-    
-    
-    /**
-     * Sorts an array of doubles using recursive implementation of Merge Sort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     *
-     * @param a: An unsorted array of doubles.
-     * @return after the method returns, the array must be in ascending sorted order.
-     */
-    static double[] mergeSortRecursive (double a[]) {
-    	
-    	int length = a.length;
-    	if(length <= 1)
-    		return a;
-    	double[] x = new double[length/2];
-    	double[] y = new double[length - length/2];
-    	for(int i = 0; i < x.length; i++)
-    		x[i] = a[i];
-    	for(int i = 0; i < y.length; i++)
-    		y[i] = a[i + length/2];
-    	return merge(mergeSortRecursive(x),mergeSortRecursive(y));
-    	
-	
-   }//end mergeSortRecursive
-    	
-    static double[] mergeArray(double a[], int left, int mid, int right){
-    	
-    	int leftArraySize = mid-left+1;
-    	int rightArraySize = right-mid;
-    	double[] leftArray = new double[leftArraySize];
-    	double[] rightArray = new double[rightArraySize];
-    	
-    	for(int i = 0; i<leftArraySize;i++)
-    		leftArray[i] = a[left+i];
-    	for(int j=0; j<rightArraySize; j++)
-    		rightArray[j] = a[mid+1+j];
-    	
-    	int leftPointer = 0;
-    	int rightPointer = 0;
-    	int tempPointer = 0;
-    	
-    	while(leftPointer<leftArraySize && rightPointer<rightArraySize){
-    		if(leftArray[leftPointer] <= rightArray[rightPointer]){
-    			a[tempPointer] = leftArray[leftPointer];
-    			leftPointer++;
-    		}
-    		else{
-    			a[tempPointer] = rightArray[rightPointer];
-    			rightPointer++;
-    		}
-    		tempPointer++;
-    	}
-    	
-    	while(leftPointer<leftArraySize){
-    		a[tempPointer++] = leftArray[leftPointer++];
-    		leftPointer++;
-    		tempPointer++;
-    	}
-    	
-    	while(rightPointer<rightArraySize){
-    		a[tempPointer++] = rightArray[rightPointer++];
-    		rightPointer++;
-    		tempPointer++;
-    	}
-    	return a;
-    }
-    
-    static int getMin(int left, int right){
-    	if(left<=right)
-    		return left;
-    	else
-    		return right;
-    }
-    
-    static double[] merge(double[] a, double[] b){
-    	double[] c = new double[a.length + b.length];
-    	int i = 0;
-    	int j = 0;
-    	for(int k = 0; k < c.length; k++){
-    		if(i >= a.length)
-    			c[k] = b[j++];
-    		else if(j >= b.length)
-    			c[k] = a[i++];
-    		else if(a[i] <= b[j])
-    			c[k] = a[i++];
-    		else
-    			c[k] = b[j++];
-    	}
-    	return c;
-    }
-    
-    /**
-     * Sorts an array of doubles using Selection Sort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     * @param a: An unsorted array of doubles.
-     * @return array sorted in ascending order
-     *
-     */
-    static double [] selectionSort (double a[]){
-    	
-        int smallest = 0;
-        double temp;
-        
-        for(int i = 0; i < a.length -1;i++){
-        	smallest = i;
-        	for(int j =1; j<a.length-1;j++){
-        		if(a[j]<a[smallest])
-        			smallest = j;
-        	}
-        	temp = a[smallest];
-        	a[smallest] = a[i];
-        	a[i] = temp;
-        }
-        return a;
-    }
-
-   
+	}//end mergesortIterative
 
 
-    public static void main(String[] args) {
 
-        //todo: do experiments as per assignment instructions
-    }
+	/**
+	 * Sorts an array of doubles using recursive implementation of Merge Sort.
+	 * This method is static, thus it can be called as SortComparison.sort(a)
+	 *
+	 * @param a: An unsorted array of doubles.
+	 * @return after the method returns, the array must be in ascending sorted order.
+	 */
+	static double[] mergeSortRecursive (double a[]) {
 
- }//end class
+		int length = a.length;
+		if(length <= 1)
+			return a;
+		double[] x = new double[length/2];
+		double[] y = new double[length - length/2];
+		for(int i = 0; i < x.length; i++)
+			x[i] = a[i];
+		for(int i = 0; i < y.length; i++)
+			y[i] = a[i + length/2];
+		return merge(mergeSortRecursive(x),mergeSortRecursive(y));
+
+
+	}//end mergeSortRecursive
+
+	static double[] mergeArray(double a[], int left, int mid, int right){
+
+		int leftArraySize = mid-left+1;
+		int rightArraySize = right-mid;
+		double[] leftArray = new double[leftArraySize];
+		double[] rightArray = new double[rightArraySize];
+
+		for(int i = 0; i<leftArraySize;i++)
+			leftArray[i] = a[left+i];
+		for(int j=0; j<rightArraySize; j++)
+			rightArray[j] = a[mid+1+j];
+
+		int leftPointer = 0;
+		int rightPointer = 0;
+		int tempPointer = 0;
+
+		while(leftPointer<leftArraySize && rightPointer<rightArraySize){
+			if(leftArray[leftPointer] <= rightArray[rightPointer]){
+				a[tempPointer] = leftArray[leftPointer];
+				leftPointer++;
+			}
+			else{
+				a[tempPointer] = rightArray[rightPointer];
+				rightPointer++;
+			}
+			tempPointer++;
+		}
+
+		while(leftPointer<leftArraySize){
+			a[tempPointer++] = leftArray[leftPointer++];
+			leftPointer++;
+			tempPointer++;
+		}
+
+		while(rightPointer<rightArraySize){
+			a[tempPointer++] = rightArray[rightPointer++];
+			rightPointer++;
+			tempPointer++;
+		}
+		return a;
+	}
+
+	static int getMin(int left, int right){
+		if(left<=right)
+			return left;
+		else
+			return right;
+	}
+
+	static double[] merge(double[] a, double[] b){
+		double[] c = new double[a.length + b.length];
+		int i = 0;
+		int j = 0;
+		for(int k = 0; k < c.length; k++){
+			if(i >= a.length)
+				c[k] = b[j++];
+			else if(j >= b.length)
+				c[k] = a[i++];
+			else if(a[i] <= b[j])
+				c[k] = a[i++];
+			else
+				c[k] = b[j++];
+		}
+		return c;
+	}
+
+	/**
+	 * Sorts an array of doubles using Selection Sort.
+	 * This method is static, thus it can be called as SortComparison.sort(a)
+	 * @param a: An unsorted array of doubles.
+	 * @return array sorted in ascending order
+	 *
+	 */
+	static double [] selectionSort (double a[]){
+
+		int smallest = 0;
+		double temp;
+
+		for(int i = 0; i < a.length -1;i++){
+			smallest = i;
+			for(int j =1; j<a.length-1;j++){
+				if(a[j]<a[smallest])
+					smallest = j;
+			}
+			temp = a[smallest];
+			a[smallest] = a[i];
+			a[i] = temp;
+		}
+		return a;
+	}
+
+
+
+
+	public static void main(String[] args) {
+
+		//todo: do experiments as per assignment instructions
+	}
+
+}//end class
 

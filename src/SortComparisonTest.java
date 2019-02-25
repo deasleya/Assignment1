@@ -54,6 +54,23 @@ public class SortComparisonTest
 	@Test
 	public void testEmpty()
 	{
+		double[] a = {};
+		double[] expected = new double[] {};
+		
+		SortComparison.insertionSort(a);
+		Arrays.equals(expected, a);
+		
+		SortComparison.quickSort(a);
+		Arrays.equals(expected, a);
+		
+		SortComparison.selectionSort(a);
+		Arrays.equals(expected, a);
+		
+		SortComparison.mergeSortIterative(a);
+		Arrays.equals(expected, a);
+		
+		SortComparison.mergeSortRecursive(a);
+		Arrays.equals(expected, a);
 	}
 
 
@@ -79,6 +96,22 @@ public class SortComparisonTest
 	public void testQuickSort(){
 		double[] a = {9.0,5.0,3,0,7.0};
 		SortComparison.quickSort(a);
+		double[] expected = new double[] {3.0,5.0,7.0,9.0};
+		Arrays.equals(expected, a);   
+	}
+	
+	@Test
+	public void testRecursiveQuick(){
+		double[] a = {9.0,5.0,3,0,7.0};
+		SortComparison.recursiveQuick(a,0,a.length-1);
+		double[] expected = new double[] {3.0,5.0,7.0,9.0};
+		Arrays.equals(expected, a);   
+	}
+	
+	@Test
+	public void testPartition(){
+		double[] a = {9.0,5.0,3,0,7.0};
+		SortComparison.partition(a,0,a.length-1);
 		double[] expected = new double[] {3.0,5.0,7.0,9.0};
 		Arrays.equals(expected, a);   
 	}
