@@ -14,13 +14,32 @@ import org.junit.runners.JUnit4;
  *  @version HT 2019
  *  
  *  a. Which of the sorting algorithms does the order of input have an impact on? Why?
+ *  
+ *  	Order of input impacts insertionsort and selectionsort. They both appear to sort faster when the input is ordered in some way.
+ *  
+ *  
  *	b. Which algorithm has the biggest difference between the best and worst performance, based
  *	   on the type of input, for the input of size 1000? Why?
+ *
+ *		Insertion sort has the biggest difference. Its best is 0ms, with its worst being 5ms when the numbers input are random. 
+ *
+ *
  *	c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
  *	   based on the input size? Please consider only input files with random order for this answer.
+ *
+ *		Best scalability - 
+ *		Worst scalability -
+ *
+ *
  *	d. Did you observe any difference between iterative and recursive implementations of merge
  *      sort?
+ *      
+ *      Merge recursive runs quicker than merge iterative in most cases.
+ *      
+ *      
  *	e. Which algorithm is the fastest for each of the 7 input files? 
+ *
+ *		Quicksort is fastest
  *
  * ALL TIMES IN MILLISECONDS
  *							Insert		Quick		Merge Recursive		Merge Iterative		Selection

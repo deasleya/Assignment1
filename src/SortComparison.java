@@ -101,30 +101,15 @@ class SortComparison {
 	 * @return after the method returns, the array must be in ascending sorted order.
 	 */
 
-	/*static double[] mergeSortIterative (double a[]) {
-
-		int current;
-		int leftStart;
-		int arraySize = a.length;
-		for(current = 1; current <= arraySize-1; current = 2*current){
-			for(leftStart=0; leftStart < arraySize-1; leftStart += 2*current){
-				int mid = leftStart + current - 1;
-				int right = getMin(leftStart+2*current-1,arraySize-1);
-				a = mergeArray(a,leftStart,mid,right);
-			}
-		}
-		return a;
-	}//end mergesortIterative*/
-
 	static double[] mergeSortIterative (double a[]) {
-		for(int size=1;size<a.length;size=size+size) {
-			for(int start=0;start<a.length-size;start+=size+size) {
-				int mid=start+size-1;
-				int end =Math.min(start+size+size-1, a.length-1);
+		
+		for(int current=1; current<a.length; current=2*current) {
+			for(int start=0; start<a.length-current; start+=2*current) {
+				int mid = start + current - 1;
+				int end =Math.min(start+(2*current)-1, a.length-1);
 				merge(a,start,mid,end);
 			}
 		}
-		//todo: implement the sort
 		return a;
 	}
 
@@ -139,140 +124,64 @@ class SortComparison {
 	 */
 
 	static double[] mergeSortRecursive(double a[]) {
-		int end=a.length-1;
+		int end = a.length-1;
 		split(a, 0, end);
 		return a;
 	}
+	
+	
 	static void split(double a[],int start,int end) {
 		if(start<end) {    
-			int middle=start+(end-start)/2;
-			split(a, start, middle);
-			split(a, middle+1, end);
-			if(a[middle]<=a[middle+1]) {
+			int mid = start + (end-start)/2;
+			split(a, start, mid);
+			split(a, mid+1, end);
+			if(a[mid]<=a[mid+1]) {
 				return;
 			}
-			merge(a, start, middle, end);
+			merge(a, start, mid, end);
 		}
 	}
-	/*static double[] mergeSortRecursive (double a[]) {
-
-		int length = a.length;
-		if(length <= 1)
-			return a;
-		double[] x = new double[length/2];
-		double[] y = new double[length - length/2];
-		for(int i = 0; i < x.length; i++)
-			x[i] = a[i];
-		for(int i = 0; i < y.length; i++)
-			y[i] = a[i + length/2];
-		return merge(mergeSortRecursive(x),mergeSortRecursive(y));
-
-	}//end mergeSortRecursive
-	 */
-	/*static double[] mergeArray(double a[], int left, int mid, int right){
-
-		int leftArraySize = mid-left+1;
-		int rightArraySize = right-mid;
-		double[] leftArray = new double[leftArraySize];
-		double[] rightArray = new double[rightArraySize];
-
-		for(int i = 0; i<leftArraySize;i++)
-			leftArray[i] = a[left+i];
-		for(int j=0; j<rightArraySize; j++)
-			rightArray[j] = a[mid+1+j];
-
-		int leftPointer = 0;
-		int rightPointer = 0;
-		int tempPointer = 0;
-
-		while(leftPointer<leftArraySize && rightPointer<rightArraySize){
-			if(leftArray[leftPointer] <= rightArray[rightPointer]){
-				a[tempPointer] = leftArray[leftPointer];
-				leftPointer++;
-			}
-			else{
-				a[tempPointer] = rightArray[rightPointer];
-				rightPointer++;
-			}
-			tempPointer++;
-		}
-
-		while(leftPointer<leftArraySize){
-			a[tempPointer++] = leftArray[leftPointer++];
-			leftPointer++;
-			tempPointer++;
-		}
-
-		while(rightPointer<rightArraySize){
-			a[tempPointer++] = rightArray[rightPointer++];
-			rightPointer++;
-			tempPointer++;
-		}
-		return a;
-	}*/
-
-	/*static int getMin(int left, int right){
-		if(left<=right)
-			return left;
-		else
-			return right;
-	}*/
-
-	/*static double[] merge(double[] a, double[] b){
-		double[] c = new double[a.length + b.length];
-		int i = 0;
-		int j = 0;
-		for(int k = 0; k < c.length; k++){
-			if(i >= a.length)
-				c[k] = b[j++];
-			else if(j >= b.length)
-				c[k] = a[i++];
-			else if(a[i] <= b[j])
-				c[k] = a[i++];
-			else
-				c[k] = b[j++];
-		}
-		return c;
-	}*/
+	
 
 	static void merge(double a[],int start,int middle,int end) {
-		int firstHalf=middle-start+1;
-		int secondHalf=end-middle;
+		int firstHalf = middle-start+1;
+		int secondHalf = end-middle;
 
 		double[] left = new double[firstHalf];
 		double[] right = new double[secondHalf];
 
-		for(int i=0;i<firstHalf;i++) {
-			left[i]=a[start+i];
+		for(int i=0; i<firstHalf; i++) {
+			left[i] = a[start+i];
 		}
-		for(int j=0;j<secondHalf;j++) {
-			right[j]=a[middle+1+j];
+		 
+		for(int j=0; j<secondHalf; j++) {
+			right[j] = a[middle+1+j];
 		}
 
-		int i=0;//index of left subarray
-		int j=0;//index of right subarray
-		int k=start;//index of aux array
+		int startPointer=0;
+		int endPointer=0;
+		int tempPointer=0;
 
-		while(i<firstHalf&&j<secondHalf) {
-			if(left[i]<=right[j]) {
-				a[k]=left[i];
-				i++;
+		while(startPointer<firstHalf && endPointer<secondHalf) {
+			if(left[startPointer]<=right[endPointer]) {
+				a[tempPointer]=left[startPointer];
+				startPointer++;
 			}else {
-				a[k]=right[j];
-				j++;
+				a[tempPointer]=right[endPointer];
+				endPointer++;
 			}
-			k++;
+			tempPointer++;
 		}
 
-		while(i<firstHalf) {
-			a[k]=left[i];
-			i++;
-			k++;
+		while(startPointer<firstHalf) {
+			a[tempPointer]=left[startPointer];
+			startPointer++;
+			tempPointer++;
 		}
-		while(j<secondHalf) {
-			a[k]=right[j];
-			j++;
-			k++;
+		while(endPointer<secondHalf) {
+			a[tempPointer]=right[endPointer];
+			endPointer++;
+			tempPointer++;
 		}	
 	}
 
@@ -330,10 +239,10 @@ class SortComparison {
 
 		double[] copy = a;
 
-		long startTime = System.currentTimeMillis();
+		double startTime = System.currentTimeMillis();
 		insertionSort(a);
-		long endtime = System.currentTimeMillis();
-		long duration = endtime-startTime;
+		double endtime = System.currentTimeMillis();
+		double duration = endtime-startTime;
 		System.out.println("Insertionsort took " + duration + " milliseconds");
 
 		a = copy;
@@ -348,12 +257,14 @@ class SortComparison {
 		mergeSortRecursive(a);
 		endtime = System.currentTimeMillis();
 		duration = endtime-startTime;
-		System.out.println("Mergesort Recursive took " + duration + " milliseconds");
+		System.out.println("Mergesort Recursive took " + (endtime-startTime) + " milliseconds");
 
 		a = copy;
 		startTime = System.currentTimeMillis();
+		System.out.println(startTime);
 		mergeSortIterative(a);
 		endtime = System.currentTimeMillis();
+		System.out.println(endtime);
 		duration = endtime-startTime;
 		System.out.println("Mergesort Iterative took " + duration + " milliseconds");
 
@@ -464,8 +375,10 @@ System.out.println("\n1000 Doubles");
 
 		c = copy;
 		startTime = System.currentTimeMillis();
+		System.out.println(startTime);
 		mergeSortRecursive(c);
 		endtime = System.currentTimeMillis();
+		System.out.println(endtime);
 		duration = endtime-startTime;
 		System.out.println("Mergesort Recursive took " + duration + " milliseconds");
 
@@ -588,7 +501,7 @@ System.out.println("\n1000 Nearly Ordered Doubles");
 		mergeSortRecursive(e);
 		endtime = System.currentTimeMillis();
 		duration = endtime-startTime;
-		System.out.println("Mergesort Recursive took " + duration + " milliseconds");
+		System.out.println("Mergesort Recursive took " + (endtime-startTime) + "------- milliseconds");
 
 		e = copy;
 		startTime = System.currentTimeMillis();
