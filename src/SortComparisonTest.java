@@ -1,9 +1,6 @@
-import static org.junit.Assert.*;
-
-import java.io.*;
+      import java.io.*;
+import java.io.File;
 import java.util.Arrays;
-
-import org.junit.Assert;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,14 +22,15 @@ import org.junit.runners.JUnit4;
  *      sort?
  *	e. Which algorithm is the fastest for each of the 7 input files? 
  *
+ * ALL TIMES IN MILLISECONDS
  *							Insert		Quick		Merge Recursive		Merge Iterative		Selection
- *	10 random
- *	100 random
- *	1000 random
- *	1000 few unique
- *	1000 nearly ordered
- *	1000 reverse order
- *	1000 sorted
+ *	10 random				1			0			0					0					0
+ *	100 random				0			0			0					0					1
+ *	1000 random				5			0			0					1					5
+ *	1000 few unique			1			0			0					1					2
+ *	1000 nearly ordered		0			0			0					0					1
+ *	1000 reverse order		0			0			0					0					2
+ *	1000 sorted				0			0			0					1					0
  */
 
 @RunWith(JUnit4.class)
@@ -105,7 +103,12 @@ public class SortComparisonTest
 		double[] a = {9.0,5.0,3,0,7.0};
 		SortComparison.recursiveQuick(a,0,a.length-1);
 		double[] expected = new double[] {3.0,5.0,7.0,9.0};
-		Arrays.equals(expected, a);   
+		Arrays.equals(expected, a); 
+		
+		//double[] b = {};
+		//SortComparison.recursiveQuick(b,3,1);
+		//expected = new double[] {};
+		//Arrays.equals(expected, b);  
 	}
 	
 	@Test
@@ -144,14 +147,56 @@ public class SortComparisonTest
 	public static void main(String[] args)
 	{
 		//TODO: implement this method
-		try {
+		/*try {
 			BufferedReader br = new BufferedReader(new FileReader(new File("numbers10.txt")));
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
+		/*double a[] = new double[] {};
+		int i =0;
+		Scanner scan;
+	    File file = new File("U:\2nd Year Programming\numbers10");
+	    try {
+	        scan = new Scanner(file);
+
+	        while(scan.hasNextDouble())
+	        {
+	            a[i]= scan.nextDouble();
+	            i++;
+	        }
+
+	    } catch (FileNotFoundException e1) {
+	            e1.printStackTrace();
+	    }
+		
+	    double[] copy = a;
+	   
+	    long startTime = System.currentTimeMillis();
+	    SortComparison.insertionSort(a);
+	    long endtime = System.currentTimeMillis();
+	    long duration = endtime-startTime;
+	    System.out.println(duration);
+	    
+	    a = copy;
+	    startTime = System.currentTimeMillis();
+	    SortComparison.quickSort(a);
+	    endtime = System.currentTimeMillis();
+	    duration = endtime-startTime;
+	    System.out.println("Quicksort took " + duration);
+
+		
+		//SortComparison.quickSort(a);
+		
+		//SortComparison.selectionSort(a);
+		
+		//SortComparison.mergeSortIterative(a);
+		
+		//SortComparison.mergeSortRecursive(a);
+
+	    */
 	}
 
 }
