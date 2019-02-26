@@ -212,7 +212,7 @@ class SortComparison {
 
 
 
-
+/*
 	public static void main(String[] args) {
 
 		//todo: do experiments as per assignment instructions
@@ -221,15 +221,15 @@ class SortComparison {
 		double a[] = new double[10];
 		int i =0;
 		Scanner scan;
+		
 		File file10 = new File("src\\numbers10.txt");
 		try {
 			scan = new Scanner(file10);
 
 			while(scan.hasNextDouble())
 			{
-				double d = scan.nextDouble();
-				//System.out.println(d);
-				a[i] = d;
+				double r = scan.nextDouble();
+				a[i] = r;
 				i++;
 			}
 
@@ -257,7 +257,7 @@ class SortComparison {
 		mergeSortRecursive(a);
 		endtime = System.currentTimeMillis();
 		duration = endtime-startTime;
-		System.out.println("Mergesort Recursive took " + (endtime-startTime) + " milliseconds");
+		System.out.println("Mergesort Recursive took " + duration + " milliseconds");
 
 		a = copy;
 		startTime = System.currentTimeMillis();
@@ -276,21 +276,21 @@ class SortComparison {
 		System.out.println("Selectionsort took " + duration + " milliseconds");
 
 		
+		
+		
 		System.out.println("\n100 Doubles");
 		
 		double b[] = new double[100];
 		i =0;
-		//Scanner scan100;
-		//Scanner scan;
+		
 		File file100 = new File("src\\numbers100.txt");
 		try {
 			scan = new Scanner(file100);
 
 			while(scan.hasNextDouble())
 			{
-				double e = scan.nextDouble();
-				//System.out.println(e);
-				b[i] = e;
+				double r = scan.nextDouble();
+				b[i] = r;
 				i++;
 			}
 
@@ -336,21 +336,20 @@ class SortComparison {
 
 
 		
-System.out.println("\n1000 Doubles");
+		
+		System.out.println("\n1000 Doubles");
 		
 		double c[] = new double[1000];
 		i =0;
-		//Scanner scan100;
-		//Scanner scan;
+		
 		File file1000 = new File("src\\numbers1000.txt");
 		try {
 			scan = new Scanner(file1000);
 
 			while(scan.hasNextDouble())
 			{
-				double e = scan.nextDouble();
-				//System.out.println(e);
-				c[i] = e;
+				double s = scan.nextDouble();
+				c[i] = s;
 				i++;
 			}
 
@@ -375,10 +374,8 @@ System.out.println("\n1000 Doubles");
 
 		c = copy;
 		startTime = System.currentTimeMillis();
-		System.out.println(startTime);
 		mergeSortRecursive(c);
 		endtime = System.currentTimeMillis();
-		System.out.println(endtime);
 		duration = endtime-startTime;
 		System.out.println("Mergesort Recursive took " + duration + " milliseconds");
 
@@ -398,21 +395,20 @@ System.out.println("\n1000 Doubles");
 
 
 		
-System.out.println("\n1000 Duplicated Doubles");
+		
+		System.out.println("\n1000 Duplicated Doubles");
 		
 		double d[] = new double[1000];
 		i =0;
-		//Scanner scan100;
-		//Scanner scan;
+		
 		File file1000dup = new File("src\\numbers1000Duplicates.txt");
 		try {
 			scan = new Scanner(file1000dup);
 
 			while(scan.hasNextDouble())
 			{
-				double e = scan.nextDouble();
-				//System.out.println(e);
-				d[i] = e;
+				double t = scan.nextDouble();
+				d[i] = t;
 				i++;
 			}
 
@@ -459,12 +455,10 @@ System.out.println("\n1000 Duplicated Doubles");
 		
 		
 		
-System.out.println("\n1000 Nearly Ordered Doubles");
+		System.out.println("\n1000 Nearly Ordered Doubles");
 		
 		double e[] = new double[1000];
 		i =0;
-		//Scanner scan100;
-		//Scanner scan;
 		File file1000nearlyOrdered = new File("src\\numbersNearlyOrdered1000.txt");
 		try {
 			scan = new Scanner(file1000nearlyOrdered);
@@ -472,7 +466,6 @@ System.out.println("\n1000 Nearly Ordered Doubles");
 			while(scan.hasNextDouble())
 			{
 				double u = scan.nextDouble();
-				//System.out.println(e);
 				e[i] = u;
 				i++;
 			}
@@ -501,7 +494,7 @@ System.out.println("\n1000 Nearly Ordered Doubles");
 		mergeSortRecursive(e);
 		endtime = System.currentTimeMillis();
 		duration = endtime-startTime;
-		System.out.println("Mergesort Recursive took " + (endtime-startTime) + "------- milliseconds");
+		System.out.println("Mergesort Recursive took " + duration + " milliseconds");
 
 		e = copy;
 		startTime = System.currentTimeMillis();
@@ -520,12 +513,11 @@ System.out.println("\n1000 Nearly Ordered Doubles");
 
 
 		
-System.out.println("\n1000 Doubles Reversed");
+		System.out.println("\n1000 Doubles Reversed");
 		
 		double f[] = new double[1000];
 		i =0;
-		//Scanner scan100;
-		//Scanner scan;
+		
 		File file1000reverse = new File("src\\numbersReverse1000.txt");
 		try {
 			scan = new Scanner(file1000reverse);
@@ -533,7 +525,6 @@ System.out.println("\n1000 Doubles Reversed");
 			while(scan.hasNextDouble())
 			{
 				double v = scan.nextDouble();
-				//System.out.println(e);
 				d[i] = v;
 				i++;
 			}
@@ -581,12 +572,10 @@ System.out.println("\n1000 Doubles Reversed");
 
 
 		
-System.out.println("\n1000 Doubles Sorted");
+		System.out.println("\n1000 Doubles Sorted");
 		
 		double g[] = new double[1000];
 		i =0;
-		//Scanner scan100;
-		//Scanner scan;
 		File file1000sorted = new File("src\\numbersSorted1000.txt");
 		try {
 			scan = new Scanner(file1000sorted);
@@ -594,7 +583,6 @@ System.out.println("\n1000 Doubles Sorted");
 			while(scan.hasNextDouble())
 			{
 				double w = scan.nextDouble();
-				//System.out.println(e);
 				d[i] = w;
 				i++;
 			}
@@ -639,66 +627,7 @@ System.out.println("\n1000 Doubles Sorted");
 		duration = endtime-startTime;
 		System.out.println("Selectionsort took " + duration + " milliseconds");
 
-
-
-
-
-		/* double a[] = new double[] {1,2,3,4,5,6,7,8,9,10};
-		int i =0;
-		Scanner scan;
-	    File file = new File("src\\numbers10.txt");
-	    try {
-	        scan = new Scanner(file);
-
-	        while(scan.hasNextDouble())
-	        {
-	        	System.out.println(scan.nextDouble());
-	            a[i] = scan.nextDouble();
-	            i++;
-	        }
-
-	    } catch (FileNotFoundException e1) {
-	            e1.printStackTrace();
-	    }
-
-	    double[] copy = a;
-
-	    long startTime = System.currentTimeMillis();
-	    SortComparison.insertionSort(a);
-	    long endtime = System.currentTimeMillis();
-	    long duration = endtime-startTime;
-	    System.out.println("Insertionsort took " + duration + " milliseconds");
-
-	    a = copy;
-	    startTime = System.currentTimeMillis();
-	    SortComparison.quickSort(a);
-	    endtime = System.currentTimeMillis();
-	    duration = endtime-startTime;
-	    System.out.println("Quicksort took " + duration + " milliseconds");
-
-	    a = copy;
-	    startTime = System.currentTimeMillis();
-	    SortComparison.mergeSortRecursive(a);
-	    endtime = System.currentTimeMillis();
-	    duration = endtime-startTime;
-	    System.out.println("Mergesort Recursive took " + duration + " milliseconds");
-
-	    a = copy;
-	    startTime = System.currentTimeMillis();
-	    SortComparison.mergeSortIterative(a);
-	    endtime = System.currentTimeMillis();
-	    duration = endtime-startTime;
-	    System.out.println("Mergesort Iterative took " + duration + " milliseconds");
-
-	    a = copy;
-	    startTime = System.currentTimeMillis();
-	    SortComparison.selectionSort(a);
-	    endtime = System.currentTimeMillis();
-	    duration = endtime-startTime;
-	    System.out.println("Selectionsort took " + duration + " milliseconds");
-
-		 */
-	}
+	}*/
 
 }//end class
 
